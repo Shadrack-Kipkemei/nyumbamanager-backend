@@ -15,8 +15,8 @@ class Unit(db.Model):
     property_id = db.Column(db.Integer, db.ForeignKey("properties.id"), nullable=False)
 
 
-    # One unit to one tenant profile
-    tenant_profile = db.relationship("TenantProfile", backref="unit", uselist=False, cascade="all, delete")
+    # One unit to one tenant
+    tenant = db.relationship("Tenant", backref="unit", uselist=False, cascade="all, delete")
     def to_dict(self):
         return {
             "id": self.id,

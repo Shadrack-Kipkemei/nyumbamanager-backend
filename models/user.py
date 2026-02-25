@@ -27,7 +27,7 @@ class User(db.Model):
     properties = db.relationship("Property", backref="landlord", lazy=True)
 
     # One tenant to one profile
-    tenant_profile = db.relationship("TenantProfile", backref="user", uselist=False, cascade="all, delete")
+    tenant = db.relationship("Tenant", backref="user", uselist=False, cascade="all, delete")
 
     # One landlord to many recorded payments
     payments_recorded = db.relationship("Payment", backref="landlord_recorder", lazy=True)
